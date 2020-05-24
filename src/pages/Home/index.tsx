@@ -31,24 +31,25 @@ const Home: React.FC = () => {
     setNumberInDisplay([...numberInDisplay, number]);
   };
 
-  const calculate = (firstNumbers: string, secondNumbers: string) => {
+  const calculate = () => {
     let resultValue = 0;
 
     if (operator === '+')
-      resultValue = parseFloat(firstNumber) + parseFloat(secondNumbers);
+      resultValue = parseFloat(firstNumber) + parseFloat(secondNumber);
 
     if (operator === '-')
-      resultValue = parseFloat(firstNumber) - parseFloat(secondNumbers);
+      resultValue = parseFloat(firstNumber) - parseFloat(secondNumber);
 
     if (operator === 'x')
-      resultValue = parseFloat(firstNumber) * parseFloat(secondNumbers);
+      resultValue = parseFloat(firstNumber) * parseFloat(secondNumber);
 
     if (operator === '/')
-      resultValue = parseFloat(firstNumber) / parseFloat(secondNumbers);
+      resultValue = parseFloat(firstNumber) / parseFloat(secondNumber);
 
     let resultValueToString = JSON.stringify(resultValue);
+
     if (resultValueToString.length > 2) {
-      resultValueToString = resultValue.toPrecision(3);
+      resultValueToString = resultValue.toPrecision(4);
       setResultInDisplay(resultValueToString);
     } else {
       setResultInDisplay(resultValueToString);
@@ -57,8 +58,10 @@ const Home: React.FC = () => {
     if (equalSignClicked) {
       setNumberInDisplay([resultValueToString]);
       setResultInDisplay(undefined);
+
       operatorClicked = false;
       equalSignClicked = false;
+
       setFirstNumber(resultValueToString);
       setSecondNumber('');
     }
@@ -76,6 +79,7 @@ const Home: React.FC = () => {
     if (firstNumber === '') {
       setFirstNumber(signalOperator);
     }
+
     setNumberInDisplay([...numberInDisplay, signalOperator]);
 
     if (firstNumber !== '') {
@@ -85,22 +89,24 @@ const Home: React.FC = () => {
         operatorClicked = true;
       } else {
         equalSignClicked = true;
-        calculate(firstNumber, secondNumber);
+        calculate();
       }
     }
   };
   const clearDisplay = () => {
     setNumberInDisplay(['']);
     setResultInDisplay(undefined);
+
     operatorClicked = false;
     equalSignClicked = false;
+
     setFirstNumber('');
     setSecondNumber('');
   };
 
   useEffect(() => {
     if (secondNumber !== '') {
-      calculate(firstNumber, secondNumber);
+      calculate();
     }
   }, [secondNumber, firstNumber]);
 
@@ -128,7 +134,7 @@ const Home: React.FC = () => {
             <Button
               onClick={() => {
                 equalSignClicked = true;
-                calculate(firstNumber, secondNumber);
+                calculate();
               }}
             >
               =
