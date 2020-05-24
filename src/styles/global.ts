@@ -13,13 +13,7 @@ export default createGlobalStyle`
     background-color: #E5E5E5;
   }
 
-  button{
-    width: 170px;
-    height: 60px;
-    font-size: 18px;
-
-    color: #fff;
-    background: #9c69e2;
-    border-radius: 50px;
+  button {
+    cursor: pointer;
   }
 `;

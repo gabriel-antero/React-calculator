@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard';
+import Home from '../pages/Home';
 import GlobalStyles from '../styles/global';
 
 const Routes: React.FC = () => {
@@ -9,7 +9,7 @@ const Routes: React.FC = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Dashboard} />
+          <Route path="/" exact component={Home} />
         </Switch>
       </BrowserRouter>
 
