@@ -25,23 +25,23 @@ export const Display = styled.div`
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
 
   h1 {
-    box-sizing: border-box;
-
-    z-index: -1;
     font-size: 45px;
     position: absolute;
     right: 5px;
   }
 
   h2 {
-    box-sizing: border-box;
-    z-index: -1;
-
     font-size: 45px;
     color: gray;
     position: absolute;
     right: 5px;
     bottom: 0;
+  }
+
+  h3 {
+    font-size: 27px;
+    position: absolute;
+    right: 5px;
   }
 `;
 

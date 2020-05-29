@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   const [operator, setOperator] = useState('');
   const [resultInDisplay, setResultInDisplay] = useState<number | string>();
 
-  const preventValue = (number: string) => {
+  const previousValue = (number: string) => {
     setFirstNumber(firstNumber + number);
 
     setNumberInDisplay([...numberInDisplay, number]);
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
 
   const handleNumber = (number: string) => {
     if (!operatorClicked) {
-      return preventValue(number);
+      return previousValue(number);
     }
 
     return nextValue(number);
@@ -114,13 +114,17 @@ const Home: React.FC = () => {
     <>
       <Container>
         <Display>
-          <h1>{numberInDisplay}</h1>
+          {numberInDisplay.length < 12 ? (
+            <h1>{numberInDisplay}</h1>
+          ) : (
+            <h3>valor máximo atingido.</h3>
+          )}
 
           {resultInDisplay ? <h2>{resultInDisplay}</h2> : null}
         </Display>
         <ButtonsContainer>
           <ButtonsNumber>
-            <Button onClick={() => handleNumber('8')}>7</Button>
+            <Button onClick={() => handleNumber('7')}>7</Button>
             <Button onClick={() => handleNumber('8')}>8</Button>
             <Button onClick={() => handleNumber('9')}>9</Button>
             <Button onClick={() => handleNumber('4')}>4</Button>
